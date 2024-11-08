@@ -1,24 +1,10 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import { Manrope } from 'next/font/google';
 import './globals.css';
 import { ThemeProvider } from '@/components/theme-provider';
 
-const geistSans = localFont({
-	src: './fonts/GeistVF.woff',
-	variable: '--font-geist-sans',
-	weight: '100 900',
-});
-const geistMono = localFont({
-	src: './fonts/GeistMonoVF.woff',
-	variable: '--font-geist-mono',
-	weight: '100 900',
-});
-
-const manropeFont = localFont({
-	src: './fonts/Manrope-VariableFont_wght.ttf',
-	variable: '--font-manrope',
-	weight: '200 900',
-});
+export const manrope = Manrope({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
 	title: 'hithere_devs',
@@ -32,17 +18,20 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en'>
-			<ThemeProvider
-				attribute='class'
-				defaultTheme='dark'
-				enableSystem
-				disableTransitionOnChange
-			>
-				<body className={`${manropeFont.variable} antialiased`}>
-					{children}
+		<>
+			<html lang='en' suppressHydrationWarning>
+				<head />
+				<body className={`${manrope.className} antialiased dark:bg-black`}>
+					<ThemeProvider
+						attribute='class'
+						defaultTheme='dark'
+						enableSystem
+						disableTransitionOnChange
+					>
+						{children}
+					</ThemeProvider>
 				</body>
-			</ThemeProvider>
-		</html>
+			</html>
+		</>
 	);
 }

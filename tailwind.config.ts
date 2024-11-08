@@ -57,7 +57,7 @@ const config: Config = {
 				red: 'var(--red-accent)',
 				blue: 'var(--blue-accent)',
 				green: 'var(--green-accent)',
-				bc: 'var(--border-color)',
+				bc: 'var(--border-clr)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
